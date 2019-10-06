@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kya khaoge</title>
+</head>
+<body>
+    <style>
+        .hd{
+            display: inline-block;
+            margin-left: 180px; 
+            text-align: left;
+            }
+
+        .hd1{             
+            text-align: center;
+            text-decoration-line: underline;
+        }
+        
+        .inbox{            
+            max-width: 800px;
+            max-height: 2200px;
+            margin: 150px auto;
+            background:lavenderblush;
+            border-radius: 15px;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.7);
+          }
+
+          .button1 {
+            background-color: white;
+            color: black;
+            border: 4px solid rgb(83, 76, 175); /* Green */
+          }
+          
+        </style>
+
+
+    {% if user.is_authenticated %}
+    <h3>Hello, {{user.username}}!</h3>
+    <p><a href="/mj/accounts/logout" class="nav-link">Logout</a></p>
+    {% endif %}
+
+    <div class = "hd1">    
+    <h1><font color = "#ff9900"><i>Please select food for the day...</i></font></h1>
+    </div>
+
+    <form>
+        <div class = "inbox">
+        <div class= "hd " h3><font color= "#cc3300"><b> MON:  </b></font></h3>
+        <input type="checkbox" name="breakfast" value="breakfast" >Breakfast
+        <input type="checkbox" name="lunch" value="lunch" checked> Lunch
+        <input type="checkbox" name="snacks" value="snacks"> Snacks
+        <input type="checkbox" name="dinner" value="dinner" checked> Dinner<br>
+        </div>
+        <br><br><br>
+
+        <div class= "hd" h3><font color= "#cc3300"><b> TUE:</font> </b>  </h3>
+        <input type="checkbox" name="breakfast" value="breakfast" > Breakfast
+        <input type="checkbox" name="lunch" value="lunch" checked> Lunch
+        <input type="checkbox" name="snacks" value="snacks"> Snacks
+        <input type="checkbox" name="dinner" value="dinner" checked> Dinner<br>
+        </div>
+        
+        <br><br><br>
+        <div class= "hd" h3><font color= "#cc3300"><b> WED: </b> </font> </h3>
+        <input type="checkbox" name="breakfast" value="breakfast" > Breakfast
+        <input type="checkbox" name="lunch" value="lunch" checked> Lunch
+        <input type="checkbox" name="snacks" value="snacks"> Snacks
+        <input type="checkbox" name="dinner" value="dinner" checked> Dinner<br>
+        </div>
+        
+        <br><br><br>
+        <div class= "hd" h3><font color= "#cc3300"><b> THU: </b>  </font></h3>
+        <input type="checkbox" name="breakfast" value="breakfast" > Breakfast
+        <input type="checkbox" name="lunch" value="lunch" checked> Lunch
+        <input type="checkbox" name="snacks" value="snacks"> Snacks
+        <input type="checkbox" name="dinner" value="dinner" checked> Dinner<br>
+        </div>
+
+        <br><br><br>
+        <div class= "hd" h3><font color= "#cc3300"><b> FRI:  </b> </font></h3>
+        <input type="checkbox" name="breakfast" value="breakfast" > Breakfast
+        <input type="checkbox" name="lunch" value="lunch" checked> Lunch
+        <input type="checkbox" name="snacks" value="snacks"> Snacks
+        <input type="checkbox" name="dinner" value="dinner" checked> Dinner<br>
+        </div>
+
+        <br><br><br>
+        <div class= "hd" h3><font color= "#cc3300"><b> SAT:  </b> </font></h3>
+         <input type="checkbox" name="breakfast" value="breakfast" > Breakfast
+         <input type="checkbox" name="lunch" value="lunch" checked> Lunch
+         <input type="checkbox" name="snacks" value="snacks"> Snacks
+         <input type="checkbox" name="dinner" value="dinner" checked> Dinner<br>
+        </div>
+        <br><br><br>
+        
+
+        <div class= "hd">
+            <div class = "button1">
+        <input type="submit" value="Submit">
+            </div>
+        </div>
+    </div>
+        
+    </form>
+
+</body>
+</html>
