@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head style="background-color:powderblue;">
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menu</title>
+	<meta name="description" content="Blueprint: A basic template for a responsive multi-level menu" />
+	<meta name="keywords" content="blueprint, template, html, css, menu, responsive, mobile-friendly" />
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="{%static 'favicon.ico' %}">
+	<!-- food icons -->
+	<link rel="stylesheet" type="text/css" href="{%static 'css3/organicfoodicons.css' %}" />
+	<!-- demo styles -->
+	<link rel="stylesheet" type="text/css" href="{%static 'css3/demo.css' %}" />
+	<!-- menu styles -->
+	<link rel="stylesheet" type="text/css" href="{%static 'css3/component.css' %}" />
+	<script src="{%static 'js3/modernizr-custom.js' %}"></script>
+
+
+	<style>
+			.hd{
+				
+					margin-top: 100px;	
+					top:45%;
+ 				 /*position: absolute;*/
+	  				left: 30px;
+
+					  border: 1px solid lightcoral;
+				
+			}
+
+			img
+			{
+				margin-top: 120px;
+				margin-right: 170px;
+			}
+
+			.contrast {-webkit-filter: contrast(200%);filter: contrast(200%);}
+		</style>
+</head>
+
+<body>
+	<!-- Main container -->
+	<div class="container">
+		<!-- Blueprint header -->
+		<header class="bp-header cf">
+			<div class="dummy-logo">
+				<div class="dummy-icon foodicon foodicon--coconut"></div>
+				<h2 class="dummy-heading"><font size="6	"><font color ="red">AIT Mess Menu</font></font></h2>
+			</div>
+			
+		</header>
+
+		<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
+		<nav id="ml-menu" class="menu">
+			<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+				<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+
+		<div class="menu__wrap">
+				<ul data-menu="main" class="menu__level" tabindex="-1" role="menu">
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-1" aria-owns="submenu-1" href="#">Monday</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-2" aria-owns="submenu-2" href="#">Tuesday</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-3" aria-owns="submenu-3" href="#">Wednesday</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-4" aria-owns="submenu-4" href="#">Thrusday</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-3" aria-owns="submenu-3" href="#">Friday</a></li>
+					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-3" aria-owns="submenu-3" href="#">Saturday</a></li>
+				</ul>
+		</div>
+
+		
+	</nav>
+	<div class= "hd">
+		<img class="contrast" src="{%static 'images3/bg-04.jpg' %}" alt="IMG" align="right">
+	</div>
+	</div>			
+		
+		
+	<!-- /view -->
+	<script src="{%static 'js3/classie.js' %}"></script>
+	<script src="{%static 'js3/dummydata.js' %}"></script>
+	<script src="{%static 'js3/main.js' %}"></script>
+	<script>
+	(function() {
+		var menuEl = document.getElementById('ml-menu'),
+			mlmenu = new MLMenu(menuEl, {
+				backCtrl : false, // show back button
+				// itemsDelayInterval : 60, // delay between each menu item sliding animation
+				onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
+			});
+
+		// mobile menu toggle
+		var openMenuCtrl = document.querySelector('.action--open'),
+			closeMenuCtrl = document.querySelector('.action--close');
+
+		openMenuCtrl.addEventListener('click', openMenu);
+		closeMenuCtrl.addEventListener('click', closeMenu);
+
+		function openMenu() {
+			classie.add(menuEl, 'menu--open');
+			closeMenuCtrl.focus();
+		}
+
+		function closeMenu() {
+			classie.remove(menuEl, 'menu--open');
+			openMenuCtrl.focus();
+		}
+
+		// simulate grid content loading
+		var gridWrapper = document.querySelector('.content');
+
+		function loadDummyData(ev, itemName) {
+			ev.preventDefault();
+
+			closeMenu();
+			gridWrapper.innerHTML = '';
+			classie.add(gridWrapper, 'content--loading');
+			setTimeout(function() {
+				classie.remove(gridWrapper, 'content--loading');
+				gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
+			}, 700);
+		}
+	})();
+	</script>
+</body>
+
+</html>
